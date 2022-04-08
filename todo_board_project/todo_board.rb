@@ -8,6 +8,7 @@ class TodoBoard
 
     def get_command
         puts 'enter command'
+        puts ' '
         cmd, *args = gets.chomp.split(' ')
 
         case cmd
@@ -15,6 +16,7 @@ class TodoBoard
             @lists[args[0]] = List.new(args[0])
         when 'ls'
             @lists.each { |k,v| puts k }
+            puts ' '
         when 'showall'
             @lists.each { |k,v| v.print }
         when 'mktodo'
@@ -51,8 +53,9 @@ class TodoBoard
     end
 
     def run
-        until get_command == false
-            get_command
+        running = true
+        while running
+            running = get_command
         end
     end
 end
